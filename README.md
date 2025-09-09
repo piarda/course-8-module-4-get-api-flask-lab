@@ -1,5 +1,55 @@
-
 # Module Lab: Building RESTful GET APIs with Flask
+
+This is a simple RESTful API built with Python and Flask. It serves a fictional product catalog and demonstrates basic API concepts such as routing, query parameters, and JSON responses.
+
+## Features:
+- Homepage route (/) that returns a welcome message.
+- /products route to retrieve all products or filter by category using a query string (e.g., /products?category=books).
+- /products/<id> route to retrieve a specific product by its ID.
+- Returns data in JSON format.
+- Handles invalid product IDs with a 404 response.
+
+## Usage Examples:
+Get homepage welcome message:
+  curl http://127.0.0.1:5000/
+Response:
+  {
+    "message": "Welcome to the Product Catalog API!"
+  }
+
+Get all products:
+  curl http://127.0.0.1:5000/products
+Response:
+  [
+    {"id": 1, "name": "Laptop", "price": 899.99, "category": "electronics"},
+    {"id": 2, "name": "Book", "price": 14.99, "category": "books"},
+    {"id": 3, "name": "Desk", "price": 199.99, "category": "furniture"}
+  ]
+
+Get products filtered by category:
+  curl "http://127.0.0.1:5000/products?category=books"
+Response:
+  [
+    {"id": 2, "name": "Book", "price": 14.99, "category": "books"}
+  ]
+
+Get a product by ID:
+  curl http://127.0.0.1:5000/products/2
+Response:
+  {
+    "id": 2,
+    "name": "Book",
+    "price": 14.99,
+    "category": "books"
+  }
+
+## Testing:
+Tests are written with pytest. To run the tests, use:
+  pytest tests/test_app.py
+All tests should pass, confirming the API works as expected.
+
+
+-----------------------
 
 ## Learning Goals
 
